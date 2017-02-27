@@ -1,0 +1,18 @@
+<h1>Report from <%= @start_date %> to <%= @end_date %></h1>
+
+<table width="100%" border="1">
+<tr>
+   <th>Nickname</th>
+   <th>E-mail</th>
+   <th>Posts count</th>
+   <th>Comments count</th>
+</tr>
+<% @report.each do |user| %>
+  <tr>
+    <td><%= user[:nickname] %></td>
+    <td><%= user[:email] %></td>
+    <td><%= user[:posts_count] %></td>
+    <td><%= user[:comments_count] %></td>
+  </tr>
+<% end %>
+</table>

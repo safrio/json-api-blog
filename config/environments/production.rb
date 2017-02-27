@@ -57,8 +57,15 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "volt_#{Rails.env}"
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = true
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.default_options = {from: 'no-reply@example.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :port           => 25,
+    :address        => 'smtp.mailgun.org',
+    :user_name      => 'postmaster@mmopay.ru',
+    :password       => '3bf0ph2zz763',
+    :domain         => 'dry-plateau-99266.herokuapp.com',
+    :authentication => :plain
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

@@ -4,8 +4,6 @@ class Api::V1::PostsController < ApplicationController
     per_page = (resource_params[:per_page] || posts_count).to_i
     page = (resource_params[:page] || 1).to_i - 1
     posts = []
-    # @users = {}
-    # User.all.pluck(:id, :nickname).map { |u| @users.merge!( { u[0] => u[1]} )}
 
     Post.includes(:author).order(:published_at).limit(per_page).offset(per_page*page).each do |p|
       posts.push(trimmer(p))
@@ -34,6 +32,7 @@ class Api::V1::PostsController < ApplicationController
 
   def trimmer(resource)
     outhash = resource.as_json
+    outhash["published_at"] = resource["published_at"].strftime("%Y-%m-%d %H:%M")
     outhash["author"] = resource.author.nickname
     outhash.delete("author_id")
     outhash

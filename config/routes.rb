@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       namespace :reports do
         post 'by_author' => 'by_author#index'
       end
+      namespace :users do
+        get 'avatar/show' => 'avatar#show'
+        post 'avatar/create' => 'avatar#create', defaults: {format: :html}
+      end
     end
   end
 end

@@ -1,0 +1,13 @@
+default: &default
+  bucket: testpaperclip123
+  access_key_id: AKIAJYJSCHCLAZFCWPUA
+  secret_access_key: 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
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
